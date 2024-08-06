@@ -129,7 +129,6 @@ const MyProvider = ({ children }) => {
     useEffect(() => {
         const fetchData = async () => {
             const data = await getTransactions();
-            console.log(data);
             setData(data);
         };
         fetchData();

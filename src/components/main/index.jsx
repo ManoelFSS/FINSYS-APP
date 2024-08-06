@@ -7,7 +7,7 @@ import { FaRegSquare, FaEdit  } from "react-icons/fa";
 import { IoTrashBinSharp } from "react-icons/io5";
 
 
-
+import randomColor from 'randomcolor';
 
 
 import PieChatComponent from '../PieChart/PieChartComponent';
@@ -32,8 +32,16 @@ export const Main = () => {
     const [amount , setAmount] = useState("");
     const [title , setTitle] = useState("");
 
+    const newDAta = data.map((d, index) => ({ 
+        ...d, 
+        color: `hsl(${(index * 360) / data.length}, 70%, 50%)`
+
+    }));
 
     useEffect(() => {
+
+        console.log(newDAta);
+
         const sumByCategory = (data) => {
             return data.reduce((acc, { category, amount }) => {
                 if (!acc[category]) {
@@ -45,13 +53,16 @@ export const Main = () => {
             }, {});
         };
 
-        const categoryTotals = sumByCategory(data);
+        const categoryTotals = sumByCategory(newDAta);
+        console.log(categoryTotals);
 
         const chartData = Object.keys(categoryTotals).map((category, index) => ({
             title: category,
             value: categoryTotals[category],
-            color: `hsl(${(index * 350) / Object.keys(categoryTotals).length}, 70%, 50%)`,
+            color: `hsl(${(index * 360) / Object.keys(categoryTotals).length}, 70%, 50%)`,
         }));
+
+        console.log(chartData);
 
         setDespesasTotais(chartData.reduce((acc, { value }) => acc + value, 0));
         setCategories(Object.keys(categoryTotals));
@@ -73,7 +84,7 @@ export const Main = () => {
         setTransactionId(id);
         setCreateEditeTransaction(true);
 
-        const transaction = data.find((transaction) => transaction._id === id);
+        const transaction = newDAta.find((transaction) => transaction._id === id);
         setType(transaction.type);
         setCategory(transaction.category);
         setAmount(transaction.amount);
@@ -81,9 +92,6 @@ export const Main = () => {
 
     }
 
-
-
-    
 
     return (
         <Conatianer>
@@ -109,8 +117,8 @@ export const Main = () => {
                 <div className='despesas'>
                     <div className='list-despesas'>
                         <ul>
-                            {data.map((item , index) => (
-                                <li key={item._id} style={{ backgroundColor: chartData[index]?.color}}  >
+                            {newDAta.map((item , index) => (
+                                <li key={item._id} style={{ backgroundColor: item.color}}  >
                                     <div className='header-despesas'>
                                         <h4>{item.title}</h4>
                                         <div className='section-icon'>
