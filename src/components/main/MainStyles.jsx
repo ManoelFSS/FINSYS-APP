@@ -26,8 +26,20 @@ export const Conatianer = styled.main`
             height: 100%;
             width: 300px;
             flex-direction: column;
+            justify-content: space-between;
             align-items: center;
+            align-items: center;
+            gap: 0.4rem;
            
+            .icon {
+                width: 4rem;
+                height: 4rem;
+                color: #fff;
+              
+                box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4);
+                z-index: 1;
+                position: relative;
+            }
 
             .title{
                 font-size: 1rem;
@@ -60,27 +72,27 @@ export const Conatianer = styled.main`
                 ul {
                     display: flex;
                     justify-content: center;
-                    gap: 0.5rem;
                     list-style: none;
                     flex-wrap: wrap;
-                    min-height: 150px;
+                    min-height: 40px;
+                   
 
                     li {
                         display: flex;
                         align-items: center;
                         gap: 0.5rem;
                         width: 140px;
-                        height: 60px;
+                        height: 40px;
                         padding: 0.5rem 0px;
                         
                     
                         h4 {
-                            font-size: 0.6rem;
+                            font-size: 0.7rem;
                             text-transform: capitalize;
                         }
 
                         p {
-                            font-size: 0.6rem;
+                            font-size: 0.7rem;
                             font-weight: 700;
                             color: #000;
                         }
@@ -110,6 +122,7 @@ export const Conatianer = styled.main`
 
             .list-despesas {
                 display: flex;
+                flex-wrap: wrap;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;

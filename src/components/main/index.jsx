@@ -89,6 +89,7 @@ export const Main = () => {
         <Conatianer>
             <section className='spending-finance'>
                 <div className='grafico'>
+                    <CardFinance title="Despesas Totais" prace={formatToBRL(despesasTotais)} icone={<FcBearish className='icon' />} />
                     <PieChatComponent teste={chartData} />
                     <h4 className='title'>{categories.length > 0 ? "Despesas por categoria" : "Nenhuma Despesa Cadastrada"}</h4>
                     <div className='despesas-categoria'>
@@ -158,7 +159,7 @@ export const Main = () => {
                     title={title}
                     setCreateEditeTransaction={setCreateEditeTransaction}
                  />
-                 
+
             </section>
         </Conatianer>
     );

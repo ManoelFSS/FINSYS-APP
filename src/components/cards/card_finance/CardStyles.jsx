@@ -10,6 +10,7 @@ export const Conatianer = styled.footer`
     text-align: center;
     gap: 1rem;
     border-radius: 0.5rem;
+    background-color: #fff;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 
     .icon-money {
